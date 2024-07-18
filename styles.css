@@ -111,3 +111,8 @@ ul li span:hover {
   background: #edeef0;
   border-radius: 50%;
 }
+
+.edit{
+  position: absolute;
+  margin-left: 200px;
+}

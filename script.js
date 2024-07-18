@@ -9,12 +9,38 @@ function addTask(){
     else{
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
-        listContainer.appendChild(li);
+
+        let editspan = document.createElement("btn");
+        editspan.innerHTML = "\u270E";
+        
+        editspan.onclick = editTask;
+        li.appendChild(editspan); 
+
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
+        span.onclick = deleteTask;
         li.appendChild(span);
+
+        listContainer.appendChild(li);
     }
     inputBox.value = "";
+    saveData();
+}
+
+function editTask(event){
+    let listItem = event.target.parentElement;
+    let taskText = listItem.firstChild;
+
+    let newText = prompt("Edit Task: ", taskText.textContent);
+    if(newText != null){
+        taskText.textContent = newText;
+        saveData();
+    }
+}
+
+function deleteTask(event){
+    let listItem = event.target.parentElement;
+    listItem.remove();
     saveData();
 }
 
